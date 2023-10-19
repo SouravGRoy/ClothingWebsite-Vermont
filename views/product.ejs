@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+    <meta name="view-transition" content="same-origin"/>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+
+  <%- include("partials/header.ejs") %>
+
+  <!-- TOP STYLINING -->
+<div style="padding-left: 40px;padding-top: 20px;">
+  <a style='display:inline; color: grey; font-weight:300;'  href="/">Home </a>
+  <a  style='display:inline; color: grey; font-weight:300;'href="/main">/ Clothing /</a>
+  <p style='display:inline; font-weight:bold;'> Online Fashion Store</p>
+     
+</div>
+
+<script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');  // Define a function to fetch product details
+  function fetchProductDetails(productId) {
+      // Make an API request to your server to fetch product details by ID
+      // Replace this with your actual API endpoint
+      fetch(`/api/products/${productId}`)
+          .then(response => response.json())
+          .then(product => {
+              if (product) {
+                  // Display the product details
+                  const productContainer = document.getElementById('product-container');
+                  productContainer.innerHTML = `
+                      <!-- Your product detail HTML here using the 'product' object -->
+                  `;
+              } else {
+                  console.error('Product not found');
+              }
+          })
+          .catch(error => {
+              console.error('Error fetching product details:', error);
+          });
+  }
+
+  // Call the fetchProductDetails function with the productId
+  fetchProductDetails(productId);
+</script>
+
+
+  
+      <!-- Use JavaScript to load and display the specific product details -->
+    <div id="product-container">
+      <!-- JavaScript will populate this section -->
+  </div>
+  <!-- Display other products -->
+  <div style="padding-left: 40px;padding-bottom: 25px; font-weight:bold;" >
+    <h2>Other Products</h2>
+  </div>
+ 
+
+  <div id="other-products" >
+      <!-- JavaScript will populate this section -->
+  </div>
+
+<!-- JavaScript to fetch and display other products -->
+<script>
+  // Sample product data (replace with your actual data)
+  const productData = {
+    1: {
+            brand: 'BRAND NAME',
+            name: 'GIORGIO ARMANI Main Line Cotton Regular Fit Polo T-Shirt',
+            description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',
+            imageUrl: 'images/1.jpg', // Update with the correct image URL
+            price: '$2100.00',
+            reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+        },
+      2: {
+          brand: 'BRAND NAME',
+          name: 'JIMMY CHOO Wilmer JC Monogram Backpack',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',
+          imageUrl: 'images/2.jpg', // Update with the correct image path
+          price: '$200.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+      },
+      3: {
+          brand: 'BRAND NAME',
+          name: 'GIORGIO ARMANI Main Line Viscose Relaxed Fit Shirt',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',
+          imageUrl: 'images/3.jpg', // Update with the correct image path
+          price: '$1999.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',      },
+      4: {
+          brand: 'BRAND NAME',
+          name: 'CALVIN KLEIN JEANS SS Teadye Standard Logo Crew-Neck T-Shirt',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',
+          imageUrl: 'images/4.jpg', // Update with the correct image path
+          price: '$200.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',      },
+      5: { 
+          brand: 'BRAND NAME',
+          name: 'GIORGIO ARMANI Main Line Polyamide Regular Fit Blouson',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',
+          imageUrl: 'images/5.jpg', // Update with the correct image path
+          price: '$3999.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',     
+           },
+      6: { 
+          brand: 'BRAND NAME',
+          name: 'COACH Limited Edition Typography Woven Muffler',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',          imageUrl: 'images/6.jpg', // Update with the correct image path
+          price: '$599.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+                },
+      7: {
+          brand: 'BRAND NAME',
+          name: 'A COLD WALL Vector Monogram Cotton Polo T-Shirt',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',           imageUrl: 'images/7.jpg', // Update with the correct image path
+          price: '$300.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+                },
+      8: {
+          brand: 'BRAND NAME',
+          name: 'Product 8',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',           imageUrl: 'images/8.jpg', // Update with the correct image path
+          price: '$1200.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+                },
+      9: {
+          brand: 'BRAND NAME',
+          name: 'Product 9',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',           imageUrl: 'images/9.jpg', // Update with the correct image path
+          price: '$3000.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+                },
+      10: {
+          brand: 'BRAND NAME',
+          name: 'Product 10',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',           imageUrl: 'images/10.jpg', // Update with the correct image path
+          price: '$799.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+                },
+      11: {
+          brand: 'BRAND NAME',
+          name: 'Product 11',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',           imageUrl: 'images/11.jpg', // Update with the correct image path
+          price: '$1190.00',
+          reviews: "Reviews",
+            color: "Color",
+            size: 'Size',
+                },
+      12: {
+          brand: 'BRAND NAME',
+          name: 'Product 12',
+          description: 'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.',            imageUrl: 'images/12.jpg', // Update with the correct image path
+          price: '$2990.00',
+           reviews: "Reviews",
+            color: "Color",
+            size: 'Size',      },
+  };
+    // Check if productId is null or undefined
+    if (productId === null || productId === undefined) {
+            // Handle the case where 'id' is missing in the URL (e.g., show an error message)
+            console.error('Product ID is missing in the URL.');
+        } else {
+            // Use productId to fetch and display the specific product details
+            const product = productData[productId];
+            if (product) {
+                const productContainer = document.getElementById('product-container');
+                productContainer.innerHTML = `
+                <section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src=${product.imageUrl}>
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
+          <div class="flex mb-4">
+            <span class="flex items-center">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <span class="text-gray-600 ml-3">${product.reviews} </span>
+            </span>
+            <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+              </a>
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                </svg>
+              </a>
+            </span>
+          </div>
+          <p class="leading-relaxed">${product.description}</p>
+          <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+            <div class="flex">
+              <span class="mr-3">${product.color}</span>
+              <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
+              <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+              <button class="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            </div>
+            <div class="flex ml-6 items-center">
+              <span class="mr-3">${product.size}</span>
+              <div class="relative">
+                <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                  <option>SM</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </select>
+                <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl text-gray-900">${product.price}</span>
+            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Cart</button>
+            <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+                `;
+            }
+        }
+    </script>
+</script>
+
+<!-- JavaScript to fetch and display other products (similar to index.html) -->
+<script>
+  // Sample other product data (replace with your actual data)
+  const otherProducts = [
+            { id: 1, name: 'GIORGIO ARMANI Main Line Cotton Regular Fit Polo T-Shirt',reviews: "Reviews",price:"$2100.00", imageUrl: 'images/1.jpg' },
+
+            { id: 2, name: 'JIMMY CHOO Wilmer JC Monogram Backpack',reviews: "Reviews",price:"$200.00", imageUrl: 'images/2.jpg' },
+
+            { id: 3, name: 'GIORGIO ARMANI Main Line Viscose Relaxed Fit Shirt',reviews: "Reviews",price:"$1999.00", imageUrl: 'images/3.jpg' },
+
+            { id: 4, name: 'CALVIN KLEIN JEANS SS Teadye Standard Logo Crew-Neck T-Shirt',reviews: "Reviews",price:"$200.00",  imageUrl: 'images/4.jpg' },
+
+            { id: 5, name: 'GIORGIO ARMANI Main Line Polyamide Regular Fit Blouson',reviews: "Reviews",price:"$3999.00", imageUrl: 'images/5.jpg' },
+
+            { id: 6, name: 'COACH Limited Edition Typography Woven Muffler',reviews: "Reviews",price:"$599.00", imageUrl: 'images/6.jpg' },
+
+            { id: 7, name: 'A COLD WALL Vector Monogram Cotton Polo T-Shirt',reviews: "Reviews",price:"$300.00", imageUrl: 'images/7.jpg' },
+
+            { id: 8, name: 'ALL SAINTS Ventry Wool Blend Checkered Coat With Lapel Collar',reviews: "Reviews",price:"$1200.00", imageUrl: 'images/8.jpg' },
+
+            { id: 9, name: 'EMPORIO ARMANI Regular Fit Cotton Sweatshirt',reviews: "Reviews",price:"$3000.00", imageUrl: 'images/9.jpg' },
+
+            { id: 10, name: 'DIESEL W-Ralle Regular Printed Jackets',reviews: "Reviews",price:"$799", imageUrl: 'images/10.jpg' },
+
+            { id: 11, name: 'JATIN MALIK The Blue Momentum Sherwani Set',reviews: "Reviews",price:"$1199", imageUrl: 'images/11.jpg' },
+
+            { id: 12, name: 'DIERMEISS BY THE DRAGON LADY Solid Coat',reviews: "Reviews",price:"$2990", imageUrl: 'images/12.jpg' },
+        ];
+
+ // Filter out the current product from the other products
+ const filteredProducts = otherProducts.filter(product => product.id != productId);
+
+  // Display other products
+  
+  const otherProductsDiv = document.getElementById('other-products');
+otherProductsDiv.classList.add('grid', 'grid-cols-1', 'md:grid-cols-4', 'gap-4');
+        filteredProducts.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('w-full', 'md:w-1/1', 'max-w-sm', 'bg-white', 'rounded-lg', 'shadow', 'light:bg-white-800', 'dark:border-gray-700', 'product-card');
+            // productDiv.onclick = () => redirectToProductDetail(product.id);href="/product?id=1"
+     // Function to redirect to product detail page
+     function redirectToProductDetail(productId) {
+        window.location.href = `/product/${productId}`;
+    }
+
+            productDiv.innerHTML =`
+            
+      <a href="/product?id=${product.id}" target="_blank">
+        <img id="product-image" class="p-2 rounded-t-lg" src="${product.imageUrl}" alt="product image" style="padding-right: 50px; padding-right: 50px;" />
+      </a>
+      <div class="px-5 pb-5" style="padding-right: 50px;">
+        <a href="#">
+          <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-black">
+            ${product.name}
+          </h5>
+        </a>
+        <div class="flex items-center mt-2.5 mb-5">
+    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">${product.reviews}</span>
+</div>
+        <div class="flex items-center mt-2.5 mb-5">
+          <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+            <!-- Star icon -->
+          </svg>
+          <!-- Add more star icons as needed -->
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-3xl font-bold text-gray-900 dark:text-black">${product.price}</span>
+          <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+        </div>
+      </div>
+    `;
+            otherProductsDiv.appendChild(productDiv);
+        });
+        
+          // Function to redirect to product detail page
+    function redirectToProductDetail(productId) {
+        window.location.href = `/product/${productId}`;
+    }
+    </script>
+     <%- include("partials/footer.ejs") %>
+
+      
+</body>
+</html>

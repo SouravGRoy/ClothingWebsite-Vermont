@@ -1,0 +1,10 @@
+/* CSS for the transition effect */
+#product-image {
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Adjust the duration and easing as needed */
+  }
+  
+  #product-image:hover {
+    transform: scale(1.2); /* Adjust the scale factor as needed */
+  }
+  
